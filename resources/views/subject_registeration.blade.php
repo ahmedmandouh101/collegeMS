@@ -7,7 +7,8 @@
                     <div class="card-header">{{ __('Register Subject') }}</div>
 
                     <div class="card-body">
-                        {!! Form::open(['action' => 'App\Http\Controllers\studentController@store', 'method' => 'post']) !!}
+                        {!! Form::open(['action' => 'App\Http\Controllers\studentController@store',
+                        'method' => 'post']) !!}
 
 
                         <div>

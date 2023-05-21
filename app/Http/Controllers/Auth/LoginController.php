@@ -30,6 +30,9 @@ class LoginController extends Controller
         } elseif ($user->role_id == 3) {
             return redirect()->route('student.index');
             //
+        } elseif ($user->role_id == 1) {
+            return redirect()->route('subjects.index');
+            //
         } else {
             return redirect('/');
         }

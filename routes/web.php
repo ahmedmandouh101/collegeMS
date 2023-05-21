@@ -24,6 +24,9 @@ Route::get('/department',  function () {
     $departments = Departments::get();
     return view('department', ['departments' => $departments]);
 })->name('department');
+Route::get('/',  function () {
+    return view('welcome');
+});
 
 Route::get('/form', [studentController::class, 'index'])->name('register');
 
@@ -35,7 +38,9 @@ Route::middleware(['auth', 'isDoctor'])->resource('doctor', DoctorController::cl
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 
@@ -44,7 +49,7 @@ Route::post('/', [AccountController::class, 'store_account'])->name('account.sto
 
 
 Route::post('/form', [studentController::class, 'index'])->name('form');
-Route::post('/', [studentController::class, 'store'])->name('form.store');
+Route::post('/student', [studentController::class, 'store'])->name('form.store');
 
 
 

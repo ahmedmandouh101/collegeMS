@@ -44,25 +44,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    // public function isAdmin()
-    // {
-    //     return $this->role_id === '1';
-    // }
-    // public function isDoctor()
-    // {
-    //     return $this->role_id === '2';
-    // }
-    // public function isStudent()
-    // {
-    //     return $this->role_id === '3';
-    // }
-
     public function medias(){
         return $this->hasMany(Media::class);
 
     }
     public function subjects(){
-        return $this->hasMany(Subject::class);
+        return $this->hasMany(Subject::class );
 
     }
 }

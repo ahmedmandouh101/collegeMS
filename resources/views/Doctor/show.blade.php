@@ -24,7 +24,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-8 col-md-offset-2 col-sm-6-offset-4">
-                                <h1>Media :</h1>
+                                <h1>Files :</h1>
                                 @foreach ($media as $m)
                                     <img src="/photos/{{ $m->name }}" style="width:60%;height:60%">
                                 @endforeach

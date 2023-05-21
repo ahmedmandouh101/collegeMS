@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Subject;
 use App\Models\User;
+use App\Models\Subject;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class studentController extends Controller
 {
@@ -30,15 +31,25 @@ class studentController extends Controller
      */
     public function store(Request $request)
     {
+        // Step 1: Validate the form input fields
         $formFields = $request->validate([
-            'name' => 'required',
+            'name' => 'required|string|max:255',
         ]);
-        $subject = Subject::findOrFail($formFields['name']);
-        $user = new User;
-        $user->subject = $subject;
+
+        // Step 2: Retrieve the authenticated user
+        $user = $request->user();
+
+        // Step 3: Set the subject attribute of the user
+        $user->subject = $formFields['name'];
+
+        // Step 4: Save the user to the database
         $user->save();
-        return redirect()->back()->with('success', 'Subject Added');
+
+        // Redirect back with a success message
+        return redirect('/student')->with('success', 'Subject added successfully.');
     }
+
+
 
     /**
      * Display the specified resource.

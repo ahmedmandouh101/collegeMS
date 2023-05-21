@@ -34,7 +34,8 @@ class AccountController extends Controller
         $user->email = $request->email;
         $user->password = $request->password;
         $user->role_id = $request->role_id;
+        $user->subject = ('');
         $user->save();
-        return redirect('/login')->with('success', 'Congratulation ,The Account has been created.');
+        return redirect('/home')->with('success', 'Congratulation ,The Account has been created.');
     }
 }
